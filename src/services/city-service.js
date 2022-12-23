@@ -22,7 +22,6 @@ class CityService{
     {
         try {
             const city = await this.cityRepository.updateCity(cityId,data);
-
             return city;
         } 
         catch (error) {
@@ -31,7 +30,7 @@ class CityService{
         }
     }
 
-    async delete(cityId)
+    async deleteCity(cityId)
     {
         try 
         {
