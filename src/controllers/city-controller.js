@@ -84,10 +84,32 @@ const get = async function(req,res)
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({// for temporary reasons here we can set status code
+        return res.status(500).json({
             data:{},
             success:false,
             message:"Not able to get city",
+            err:error,
+        });
+    }
+}
+
+const getAll = async function(req, res)
+{
+    try {
+        const cities = await cityService.getAllCities();//for temporary reason we left the parameter
+        return res.status(200).json({
+            data:cities,
+            success:true,
+            message:"Succesfully fetch All City",
+            err:{},
+        });
+        return cities;
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"Not able to get cities",
             err:error,
         });
     }
@@ -98,4 +120,5 @@ module.exports = {
     destroy,
     update,
     get,
+    getAll,
 }
