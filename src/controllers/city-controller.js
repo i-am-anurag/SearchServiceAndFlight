@@ -6,16 +6,16 @@ const create = async function(req,res)
 {
     try 
     {
-        const city = await cityService.createCity(req.body.city);
-        return res.status(201).json({// for temporary reasons here we can set status code 201 later we will do some other stuff here
+        const city = await cityService.createCity(req.body);
+        return res.status(201).json({
             data:city,
             success:true,
             message:"Succesfully Created City",
             err:{},
         });
     } catch (error) {
-        console.log(error.message);
-        return res.status(501).json({// for temporary reasons here we can set status code
+        console.log(error);
+        return res.status(500).json({
             data:{},
             success:false,
             message:"Not able to create city",
@@ -30,7 +30,7 @@ const destroy = async function(req,res)
     try
     {
         const response = await cityService.deleteCity(req.params.id);
-        return res.status(200).json({// for temporary reasons here we can set status code 201 later we will do some other stuff here
+        return res.status(200).json({
             data:response,
             success:true,
             message:"Succesfully deleted City",
@@ -38,7 +38,7 @@ const destroy = async function(req,res)
         });
     } catch (error) {
         console.log(error.message);
-        return res.status(501).json({// for temporary reasons here we can set status code
+        return res.status(500).json({
             data:{},
             success:false,
             message:"Not able to delete city",
@@ -53,15 +53,15 @@ const update = async function(req,res)
     try 
     {
         const response = await cityService.updateCity(req.params.id,req.body);//this contain city id and city data
-        return res.status(200).json({// for temporary reasons here we can set status code 201 later we will do some other stuff here
+        return res.status(200).json({
             data:response,
             success:true,
             message:"Succesfully update City",
             err:{},
         });
     } catch (error) {
-        console.log(error.message);
-        return res.status(501).json({// for temporary reasons here we can set status code
+        console.log(error);
+        return res.status(500).json({// for temporary reasons here we can set status code
             data:{},
             success:false,
             message:"Not able to update city",
@@ -76,15 +76,15 @@ const get = async function(req,res)
     try 
     {
         const response = await cityService.getCity(req.params.id);
-        return res.status(200).json({// for temporary reasons here we can set status code 201 later we will do some other stuff here
+        return res.status(200).json({
             data:response,
             success:true,
             message:"Succesfully fetch City",
             err:{},
         });
     } catch (error) {
-        console.log(error.message);
-        return res.status(501).json({// for temporary reasons here we can set status code
+        console.log(error);
+        return res.status(500).json({// for temporary reasons here we can set status code
             data:{},
             success:false,
             message:"Not able to get city",
@@ -93,10 +93,9 @@ const get = async function(req,res)
     }
 }
 
-module.exports = 
-{
+module.exports = {
     create,
     destroy,
     update,
-    get
+    get,
 }
