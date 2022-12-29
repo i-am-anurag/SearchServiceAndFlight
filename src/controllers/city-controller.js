@@ -96,7 +96,7 @@ const get = async function(req,res)
 const getAll = async function(req, res)
 {
     try {
-        const cities = await cityService.getAllCities();//for temporary reason we left the parameter
+        const cities = await cityService.getAllCities(req.query);//for temporary reason we left the parameter
         return res.status(200).json({
             data:cities,
             success:true,
