@@ -18,10 +18,10 @@ const setupAndCreateServer = async()=> {
     app.listen(PORT,async()=>{
         console.log(`listening on port${PORT}`);
 
-        if(process.env.SYNC_DB)
-        {
-            db.sequelize.sync({alter: true});
-        }
+        // if(process.env.SYNC_DB)
+        // {
+        //     db.sequelize.sync({alter: true});
+        // }
         
         // if we want to create using interface
         // await Airplane.create(
