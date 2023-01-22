@@ -4,6 +4,15 @@ const flightService = new FlightService();
 
 const create = async function (req,res){
     try {
+        const flightReuestData = {
+            flightNumber:req.body.flightNumber,
+            airplaneId:req.body.airplaneId,
+            departureAirportId:req.body.departureAirportId,
+            arrivalAirportId:req.body.arrivalAirportId,
+            arrivalTime:req.body.arrivalTime,
+            departureTime:req.body.departureTime,
+            Price:req.body.Price,
+        }
         const flight = await flightService.createFlight(req.body);
         // if(!flight.ok){
         //     throw new Error('Data is not get Successfully');
