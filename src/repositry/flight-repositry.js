@@ -55,11 +55,13 @@ class FlightRepository {
     {
         try {
             const flight = await Flights.findByPk(flightId);
+            console.log(`Flight Data is:${flight}`);
+
             return flight;
         } catch (error) {
             console.error(error);
             console.log("Something went wrong in flight repository");
-            throw {error};
+            throw error;
         }
     }
 
@@ -77,6 +79,21 @@ class FlightRepository {
             console.error(error);
             console.log("Something went wrong in flight repository");
             throw {error};
+        }
+    }
+
+    async updateFlight(flightId,data){
+        try {
+            await Flights.update(data,{
+                where:{
+                    id:flightId,
+                }
+            });
+            
+            return true;
+        } catch (error) {
+            console.log("Something went wrong in flight repository");
+            throw {error}; 
         }
     }
 }

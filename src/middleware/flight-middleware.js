@@ -21,6 +21,22 @@ const validateCreateFlight = (req, res, next) =>
        next();
 }
 
+// const validateseachflight = (req,res,next)
+// {
+//     if(!req.params.id)
+//     {
+//         return res.status(clientErrorCodes.BAD_REQUEST).json({
+//                 data: [],
+//                 success: false,
+//                 message: 'Missing parameter ',
+//                 error: 'Missing mendotory parameter to search flight',  
+//             });
+//     }
+
+//     next();
+// }
+
 module.exports = {
     validateCreateFlight,
+    // validateseachflight,
 }
